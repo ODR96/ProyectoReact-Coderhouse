@@ -1,0 +1,33 @@
+.css-hip9hq-MuiPaper-root-MuiAppBar-root {
+    background-color: #F0ECE3 !important;
+}
+
+.logoImg {
+    padding: 10px;
+    margin: 10px;
+}
+
+ul {
+    list-style: none;
+}
+
+li {
+    display: inline;
+    padding: 5px;
+    margin: 3px;
+}
+
+
+a {
+    margin: 5px;
+    padding: 5px;
+    border-right: rgba(65, 65, 65, 0.667) 2px dashed;
+    border-left: rgba(65, 65, 65, 0.667) 2px dashed;
+    text-decoration: none;
+}
+
+a:hover {
+    font-size: 20px;
+    color: #A68DAD;
+    transition: all .5s ease-in-out;
+}

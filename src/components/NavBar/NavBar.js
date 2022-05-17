@@ -1,6 +1,8 @@
 import './NavBar.css';
 import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
+import { Button } from '@mui/material';
+import CartWidget from './CartWidget';
 
 
 const NavBar = () => {
@@ -8,7 +10,7 @@ const NavBar = () => {
         <AppBar position="static">
             <Toolbar>
                 <div className='logoImg'>
-                <img src='./logo.png' />
+                    <img src='./logo.png' />
                 </div>
                 <ul>
                     <li><a href='#'>Inicio</a></li>
@@ -16,6 +18,7 @@ const NavBar = () => {
                     <li><a href='#'>Preguntas Frecuentes</a></li>
                     <li><a href='#'>Tienda</a></li>
                 </ul>
+                <CartWidget />
             </Toolbar>
         </AppBar>
     );

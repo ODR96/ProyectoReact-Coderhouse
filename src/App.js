@@ -1,11 +1,12 @@
 import './App.css';
 import NavBar from './components/NavBar/NavBar';
+import ItemListContainer from './components/Card/ItemListContainer';
 
 function App() {
   return (
     <div className="App">
       <NavBar />
-      <h1>Contenido de la app</h1>
+      <ItemListContainer tittle={'Lista de Productos'}/>
     </div>
   );
 }

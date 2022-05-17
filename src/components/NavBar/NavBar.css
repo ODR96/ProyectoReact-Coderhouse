@@ -31,3 +31,8 @@ a:hover {
     color: #A68DAD;
     transition: all .5s ease-in-out;
 }
+
+.btn-cart {
+    margin-right: 15px;
+    margin-left: auto;
+}

@@ -1,0 +1,14 @@
+.card-item {
+    width: 400px;
+    height: 300px;
+    border: 1px black solid;
+    margin: 5px;
+    border-radius: 10px;
+    flex-direction: column;
+    display: flex;
+}
+
+.btn-card {
+    width: max-content;
+    align-self: center;
+}

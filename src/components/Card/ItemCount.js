@@ -20,17 +20,13 @@ const ItemCount = ({ stock, initial, onAdd }) => {
         }
     }
 
-    onAdd = () => {
-        alert(`Se agregaron ${count} productos al carrito`);
-    }
-
     return (
         <div className="count-item">
             <button onClick={removeCount}>-</button>
             <p>{count}</p>
             <button onClick={addCount}>+</button>
             <div>
-                <button onClick={onAdd}>Agregar al carrito</button>
+                <button onClick={ () => onAdd(count)}>Agregar al carrito</button>
             </div>
         </div>
     )

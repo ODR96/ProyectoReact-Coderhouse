@@ -1,0 +1,17 @@
+.detail-card{
+    display: flex;
+    margin: 10px auto;
+    width: 600px;
+    height: 400px;
+}
+
+.imgPrincipal {
+    width: 300px;
+    margin: 5px;
+}
+
+.imgMuestra {
+    width: 80px;
+    border: 1px #FD611A solid;
+    margin: 3px;
+}

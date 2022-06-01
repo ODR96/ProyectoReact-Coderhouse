@@ -2,7 +2,7 @@ import { useState } from "react";
 import './ItemCount.css';
 
 const ItemCount = ({ stock, initial, onAdd }) => {
-    const [count, setCount] = useState(initial);
+    const [count, setCount] = useState(1);
 
     const removeCount = () => {
         if (count > initial) {
@@ -11,7 +11,7 @@ const ItemCount = ({ stock, initial, onAdd }) => {
             alert('No puede poner menos productos');
         }
     }
-
+    
     const addCount = () => {
         if (count < stock) {
             setCount(count + 1);

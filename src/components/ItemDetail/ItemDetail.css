@@ -15,3 +15,7 @@
     border: 1px #FD611A solid;
     margin: 3px;
 }
+
+.Link:visited {
+    text-decoration: none;
+}

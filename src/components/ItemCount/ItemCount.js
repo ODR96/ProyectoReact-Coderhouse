@@ -1,20 +1,19 @@
-import { useState } from "react";
+import { Button } from "@mui/material";
 import './ItemCount.css';
 
-const ItemCount = ({ stock, initial, onAdd }) => {
-    const [count, setCount] = useState(1);
+const ItemCount = ({ stock, initial, cantidad, setCantidad, setMostrarBoton }) => {
 
     const removeCount = () => {
-        if (count > initial) {
-            setCount(count - 1);
+        if (cantidad > initial) {
+            setCantidad(cantidad - 1);
         } else {
             alert('No puede poner menos productos');
         }
     }
     
     const addCount = () => {
-        if (count < stock) {
-            setCount(count + 1);
+        if (cantidad < stock) {
+            setCantidad(cantidad + 1);
         } else {
             alert('No hay stock suficiente');
         }
@@ -22,11 +21,11 @@ const ItemCount = ({ stock, initial, onAdd }) => {
 
     return (
         <div className="count-item">
-            <button onClick={removeCount}>-</button>
-            <p>{count}</p>
-            <button onClick={addCount}>+</button>
+            <Button onClick={removeCount} className="card-item-button">-</Button>
+            <p>{cantidad}</p>
+            <Button onClick={addCount} className="card-item-button">+</Button>
             <div>
-                <button onClick={ () => onAdd(count)}>Agregar al carrito</button>
+                <Button className="card-item-button" onClick={ () => setMostrarBoton(true)}>Agregar al carrito</Button>
             </div>
         </div>
     )

@@ -6,9 +6,36 @@
     border-radius: 10px;
     flex-direction: column;
     display: flex;
+    position: relative;
 }
 
-.btn-card {
-    width: max-content;
-    align-self: center;
+.card-item .btn-card {
+    position: absolute;
+    width: 100%;
+    background: none;
+    border: none;
+    left: 0;
+    box-shadow: none;
+    bottom: -30px;
+    background: #ffffffa1;
+    color: black;
+    z-index: 0;
+    border-radius: 0px;
+    opacity: 0;
+    transition: all 0.3s ease;
+    font-size: 15px;
+}
+
+.card-item .card-item__img:hover .btn-card {
+    bottom: 0px;
+    opacity: 1;
+}
+
+.card-item__img {
+    position: relative;
+}
+
+.card-item .btn-card:hover {
+    background: white;
+    box-shadow: none;
 }

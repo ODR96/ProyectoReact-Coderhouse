@@ -3,7 +3,6 @@ import './ItemListContainer.css';
 import { useState, useEffect } from "react";
 import { useParams } from 'react-router-dom';
 import productos from '../../utils/productsMock';
-import ProductList from '../../pages/ProductList';
 
 const ItemListContainer = ({ tittle }) => {
     const [products, setProducts] = useState([]);
@@ -33,7 +32,7 @@ const ItemListContainer = ({ tittle }) => {
     
     const filterByCategory = (array) => {
         return array.map( (item) => {
-            if(item.categoria.toLowerCase() === category){
+            if(item.categoria.toLowerCase() === category.toLowerCase()){
                 return setProducts(products => [...products, item]);
             }
         })
@@ -43,7 +42,7 @@ const ItemListContainer = ({ tittle }) => {
         <>
             <h2>{tittle}</h2>
             <div className='list-item'>
-                <ItemList productos={products} />
+                <ItemList productos={products}/>
             </div>
         </>
     )

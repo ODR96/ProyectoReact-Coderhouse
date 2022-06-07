@@ -7,6 +7,7 @@ import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import { Link } from 'react-router-dom';
 import CartWidget from './CartWidget';
+import productos from '../../utils/productsMock';
 
 const NavBar = () => {
     const [anchorEl, setAnchorEl] = useState(null);
@@ -18,12 +19,13 @@ const NavBar = () => {
         setAnchorEl(null);
     };
 
+
     return (
         <AppBar position="static">
             <Toolbar>
                 <div className='logoImg'>
                     <Link to={'/'}>
-                        <img src='./logo.png' alt='Logo de la pagina'/>
+                        <img src='./logo.png' alt='Logo de la pagina' />
                     </Link>
                 </div>
                 <ul>
@@ -51,10 +53,12 @@ const NavBar = () => {
                             MenuListProps={{
                                 'aria-labelledby': 'basic-button',
                             }}
+
                         >
-                            <MenuItem onClick={handleClose}><Link to={'/category/monitores'} className='Link'>Monitores</Link></MenuItem>
-                            <MenuItem onClick={handleClose}><Link to={'/category/placasdevideo'} className='Link'>Placas de videos</Link></MenuItem>
-                            <MenuItem onClick={handleClose}><Link to={'/category/almacenamiento'} className='Link'>Almacenamiento</Link></MenuItem>
+                            {productos.map((item) => {
+                                return <MenuItem onClick={handleClose}><Link to={`/category/${item.categoria}`} className='Link'>{item.categoria}</Link></MenuItem>
+                            })
+                            }
                         </Menu>
                     </li>
                 </ul>

@@ -2,12 +2,25 @@ import './ItemDetail.css';
 import ItemCount from '../ItemCount/ItemCount';
 import { Button } from '@mui/material';
 import { Link } from 'react-router-dom';
-import { useState } from 'react';
+import { useState, useContext } from 'react';
+import CartContext from '../../context/CartContext';
 
 const ItemDetail = ({ producto }) => {
-    const { img, imgMini1, imgMini2, imgMini3, titulo, precio, descripcion, stock, initial, categoria } = producto;
+    const {addProductCart} = useContext(CartContext);
+    const {deleteItem} = useContext(CartContext);
+    const {id, img, imgMini1, imgMini2, imgMini3, titulo, precio, descripcion, stock, initial, categoria } = producto;
     const [cantidad, setCantidad] = useState(1);
     const [mostrarBoton, setMostrarBoton] = useState(false);
+
+    const sendItem = (cant) => {
+        addProductCart({...producto, cantidad : cant})
+        setMostrarBoton(true)
+    }
+
+    const modificarCompra = (id) => {
+        deleteItem(id)
+        setMostrarBoton(false)
+    }
 
     return (
         <div className="detail-card">
@@ -25,19 +38,21 @@ const ItemDetail = ({ producto }) => {
                 {!mostrarBoton ?
                     <>
                     <ItemCount
+                        titulo={titulo}
+                        imgMini1={imgMini1}
+                        precio={precio}
                         stock={stock}
                         initial={initial}
-                        setMostrarBoton={setMostrarBoton}
                         cantidad={cantidad}
                         setCantidad={setCantidad}
+                        onAdd={sendItem}
                     />
                     <Button><Link to={`/category/${categoria}`} className="Link">Volver</Link></Button>
                     </>
                     :
                     <>
-                        <span>Precio Total: $ {precio * cantidad}</span>
                         <Button><Link to={'/cart'} className='Link'>Finalizar Compra</Link></Button>
-                        <Button onClick={() => setMostrarBoton(false)}>Cancelar</Button>
+                        <Button onClick={() => modificarCompra(id)}>Modificar Compra</Button>
                     </>
                 }
             </div>

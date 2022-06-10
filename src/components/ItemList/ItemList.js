@@ -4,7 +4,7 @@ const ItemList = ({ productos }) => {
     return (
         <>
             {
-                productos.map(({ img, titulo, categoria, precio, stock, id, initial }) => {
+                productos.map(({ img, imgMini1, titulo, categoria, precio, stock, id, initial }) => {
                     return (
                         <div className='list-item' key={id}>
                             <Item
@@ -12,6 +12,7 @@ const ItemList = ({ productos }) => {
                                 categoria={categoria}
                                 precio={precio}
                                 img={img}
+                                imgMini1={imgMini1}
                                 stock={stock}
                                 initial={initial}
                                 id={id} />

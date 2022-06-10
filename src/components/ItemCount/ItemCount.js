@@ -1,7 +1,7 @@
 import { Button } from "@mui/material";
 import './ItemCount.css';
 
-const ItemCount = ({ stock, initial, cantidad, setCantidad, setMostrarBoton }) => {
+const ItemCount = ({ stock, initial, cantidad, setCantidad, onAdd }) => {
 
     const removeCount = () => {
         if (cantidad > initial) {
@@ -10,7 +10,7 @@ const ItemCount = ({ stock, initial, cantidad, setCantidad, setMostrarBoton }) =
             alert('No puede poner menos productos');
         }
     }
-    
+
     const addCount = () => {
         if (cantidad < stock) {
             setCantidad(cantidad + 1);
@@ -25,7 +25,9 @@ const ItemCount = ({ stock, initial, cantidad, setCantidad, setMostrarBoton }) =
             <p>{cantidad}</p>
             <Button onClick={addCount} className="card-item-button">+</Button>
             <div>
-                <Button className="card-item-button" onClick={ () => setMostrarBoton(true)}>Agregar al carrito</Button>
+                <Button className="card-item-button" onClick={() => onAdd(cantidad)}>
+                    Agregar al carrito
+                </Button>
             </div>
         </div>
     )

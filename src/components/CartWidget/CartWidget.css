@@ -1,0 +1,53 @@
+.count-cart {
+    padding: 0px 5px;
+    border: 1px solid black;
+    border-radius: 50%;
+    background-color: black;
+    color: #F0ECE3;
+    position: absolute;
+    margin-bottom: 30px;
+    margin-left: 40px;
+    font-size: 10px;
+}
+
+.itemCartProd {
+    display: flex;
+}
+
+.btnCartDelete {
+    margin-top: 40px;
+    margin-left: auto;
+}
+
+.btnCart {
+    display: flex;
+    justify-content: center;
+}
+
+.btnCart .Link {
+    color: white!important;
+}
+
+.btnCart > Button {
+    margin: 5px;
+    background: black;
+    color: white !important;
+
+}
+
+.btnCart > Button:hover {
+    color: black !important;
+}
+
+.imgCart {
+    margin: auto 10px;
+}
+
+.imgCart>img {
+    width: 100px;
+
+}
+
+.itemCartDesc>p {
+    margin: 5px;
+}

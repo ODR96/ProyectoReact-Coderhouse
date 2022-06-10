@@ -6,7 +6,7 @@ import Button from '@mui/material/Button';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import { Link } from 'react-router-dom';
-import CartWidget from './CartWidget';
+import CartWidget from '../CartWidget/CartWidget';
 import productos from '../../utils/productsMock';
 
 const NavBar = () => {
@@ -19,6 +19,9 @@ const NavBar = () => {
         setAnchorEl(null);
     };
 
+    const agregarCategorias = productos.map((item) => {
+                return <div key={item.id}><MenuItem onClick={handleClose}><Link to={`/category/${item.categoria}`} className='Link'>{item.categoria}</Link></MenuItem></div>
+        })
 
     return (
         <AppBar position="static">
@@ -55,9 +58,8 @@ const NavBar = () => {
                             }}
 
                         >
-                            {productos.map((item) => {
-                                return <MenuItem onClick={handleClose}><Link to={`/category/${item.categoria}`} className='Link'>{item.categoria}</Link></MenuItem>
-                            })
+                            {
+                            agregarCategorias
                             }
                         </Menu>
                     </li>

@@ -10,6 +10,14 @@
     font-size: 10px;
 }
 
+h2 {
+    padding: 5px;
+}
+
+.itemCartDesc {
+    margin: auto;
+}
+
 .itemCartProd {
     display: flex;
 }

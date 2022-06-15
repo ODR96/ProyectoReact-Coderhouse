@@ -11,7 +11,9 @@ const CartWidget = () => {
     const { cartListItems } = useContext(CartContext);
     const { clearCart } = useContext(CartContext);
     const { deleteItem } = useContext(CartContext);
+    const { cantInCart } = useContext(CartContext);
     const [anchorEl, setAnchorEl] = useState(null);
+
     const open = Boolean(anchorEl);
 
     const handleClick = (event) => {
@@ -23,59 +25,59 @@ const CartWidget = () => {
 
     return (
         <div className='btn-cart'>
-            <Button
-                id="basic-button"
-                aria-controls={open ? 'basic-menu' : undefined}
-                aria-haspopup="true"
-                aria-expanded={open ? 'true' : undefined}
-                onClick={handleClick}
-                variant="text"
-            >
-                <ShoppingCartSharpIcon sx={{ color: "black", fontSize: 35 }} />
-                <span className='count-cart'>{cartListItems.length}</span>
-            </Button>
-            <Menu
-                id="basic-menu"
-                anchorEl={anchorEl}
-                open={open}
-                onClose={handleClose}
-                MenuListProps={{
-                    'aria-labelledby': 'basic-button',
-                }}
-            >
-                <div>
-                    {cartListItems.length === 0 && (
-                        <>
-                            <h2>No hay productos en el carrito</h2>
-                        </>
-                    )}
-                    {cartListItems.map((item) => {
-                        return (
-                            <div className='itemCartProd' key={item.id}>
-                                <div className='imgCart'>
-                                    <img src={`${item.imgMini1}`} alt='Imagen producto' />
-                                </div>
-                                <div className='itemCartDesc'>
-                                    <p>{item.titulo}</p>
-                                    <span>x{item.cantidad}</span>
-                                    <span>$ {item.precio * item.cantidad}</span>
-                                </div>
-                                <div className='btnCartDelete'>
-                                    <Button>
-                                        <DeleteIcon onClick={() => deleteItem(item.id)} />
-                                    </Button>
-                                </div>
-                            </div>
-                        )
-                    })}
-                    {cartListItems.length !== 0 && (
-                        <div className='btnCart'>
-                            <Button><Link to={'/cart'} className='Link'>Finalizar Compra</Link></Button>
-                            <Button onClick={() => clearCart()}>Limpiar carrito</Button>
-                        </ div>
-                    )}
-                </div>
-            </Menu>
+            {cartListItems.length !== 0 && (
+                <>
+                    <Button
+                        id="basic-button"
+                        aria-controls={open ? 'basic-menu' : undefined}
+                        aria-haspopup="true"
+                        aria-expanded={open ? 'true' : undefined}
+                        onClick={handleClick}
+                        variant="text"
+                    >
+                        <ShoppingCartSharpIcon sx={{ color: "black", fontSize: 35 }} />
+                        <span className='count-cart'>{cantInCart()}</span>
+                    </Button>
+                    <Menu
+                        id="basic-menu"
+                        anchorEl={anchorEl}
+                        open={open}
+                        onClose={handleClose}
+                        MenuListProps={{
+                            'aria-labelledby': 'basic-button',
+                        }}
+                    >
+                        <div>
+                            {cartListItems.map((item) => {
+                                return (
+                                    <div className='itemCartProd' key={item.id}>
+                                        <div className='imgCart'>
+                                            <img src={`${item.imgMini1}`} alt='Imagen producto' />
+                                        </div>
+                                        <div className='itemCartDesc'>
+                                            <p>{item.titulo}</p>
+                                            <span>x{item.cantidad}</span>
+                                            <span>$ {item.precio * item.cantidad}</span>
+                                        </div>
+                                        <div className='btnCartDelete'>
+                                            <Button>
+                                                <DeleteIcon onClick={() => deleteItem(item.id)} />
+                                            </Button>
+                                        </div>
+                                    </div>
+                                )
+                            })}
+                            {cartListItems.length !== 0 && (
+                                <div className='btnCart'>
+                                    <Button><Link to={'/cart'} className='Link'>Finalizar Compra</Link></Button>
+                                    <Button onClick={() => clearCart()}>Limpiar carrito</Button>
+                                </ div>
+                            )}
+                        </div>
+                    </Menu>
+                </>
+            )}
+
         </div>
     )
 }

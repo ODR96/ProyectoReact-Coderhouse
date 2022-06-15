@@ -1,11 +1,41 @@
 .cart-container {
     display: flex;
     flex-direction: column;
+    align-items: center;
+}
+
+.cart-container h2{
+    flex-direction: column;
 }
 
 .item-cart-prod {
+    width: 90%;
+    height: auto;
+    margin: 5px;
     display: flex;
+}
+
+.item-cart-desc {
+    display: flex;
+    align-items: center;
     margin: auto;
 }
 
-.img-cart > img {width: 100px;margin: 15px;padding: 5px;}
+.item-cart-cant {
+    margin: auto;
+}
+
+.item-cart-prec {
+    margin: auto;
+}
+
+.img-cart>img {
+    width: 100px;
+    margin: 15px;
+    padding: 5px;
+}
+
+.btn-cart-delete {
+    display: flex;
+    align-items: center;
+} 

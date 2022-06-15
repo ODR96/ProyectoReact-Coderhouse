@@ -5,12 +5,25 @@ const CartContext = createContext();
 const CartProvider = ({ children }) => {
     const [cartListItems, setCartListItems] = useState([]);
 
-    const addProductCart = (producto) => {
-        let isInCart = cartListItems.find(cartItem => (cartItem.id === producto.id));
-        if (!isInCart) {
+    const isInCart = (id) => {
+        return cartListItems.find(cartItem => (cartItem.id === id));
+    }
+
+    const precioTotal = () => {
+        if (cartListItems.length !== 0) {
+            return cartListItems.reduce((acc, current) => acc + current.precio  * current.cantidad, 0)
+        }
+    }
+
+    const cantInCart = () => {
+        if (cartListItems.length !== 0) {
+            return cartListItems.reduce((acc, current) => acc + current.cantidad, 0)
+        }
+    }
+
+    const addProductCart = (producto, cantidad) => {
+        if (!isInCart(producto.id)) {
             setCartListItems(cartListItems => [...cartListItems, producto]);
-        } else {
-            
         }
     }
 
@@ -25,7 +38,10 @@ const CartProvider = ({ children }) => {
         cartListItems,
         addProductCart,
         clearCart,
-        deleteItem
+        deleteItem,
+        isInCart,
+        precioTotal,
+        cantInCart
     }
 
     return (

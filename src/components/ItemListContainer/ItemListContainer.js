@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import { useParams } from 'react-router-dom';
 import productos from '../../utils/productsMock';
 
-const ItemListContainer = ({ tittle }) => {
+const ItemListContainer = ({tittle}) => {
     const [products, setProducts] = useState([]);
     const { category } = useParams();
 
@@ -37,10 +37,18 @@ const ItemListContainer = ({ tittle }) => {
             }
         })
     }
+
+    const titulo = () => {
+        if(category === undefined) {
+            return tittle;
+        } else {
+            return category;
+        }
+    }
     
     return (
         <>
-            <h2>{tittle}</h2>
+            <h2>{titulo()}</h2>
             <div className='list-item'>
                 <ItemList productos={products}/>
             </div>

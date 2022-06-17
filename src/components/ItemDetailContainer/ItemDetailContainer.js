@@ -1,39 +1,36 @@
 import { useState, useEffect } from "react";
 import ItemDetail from "../ItemDetail/ItemDetail";
-import productos from '../../utils/productsMock';
-import { useParams, useNavigate } from "react-router-dom"
+import { useParams, useNavigate } from "react-router-dom";
+import { doc, getDoc } from 'firebase/firestore';
+import db from "../../utils/firebaseConfig";
 
 const ItemDetailContainer = () => {
     const { id } = useParams();
     const navigate = useNavigate();
     const [product, setProduct] = useState([]);
 
-const getItem = () => {
-    return new Promise((resolve, reject) => {
-        setTimeout(() => {
-            resolve(productFilter)
-        }, 2000)
-    })
+    const getItem = async () => {
+        const docRef = doc(db, "Productos", id);
+        const docSnapshop = await getDoc(docRef);
+        let producto = docSnapshop.data();
+        producto.id = docSnapshop.id;
+        return producto;
     }
 
 
     useEffect(() => {
         getItem()
-            .then((res) => {
-                if (productFilter === undefined) {
+            .then((prod) => {
+                if (prod.id === undefined) {
                     navigate('/NotFound')
                 } else {
-                    setProduct(productFilter);
+                    setProduct(prod);
                 }
             })
             .catch((err) => {
                 console.log('Fallo la llamada', err);
             })
     }, [id])
-
-    const productFilter = productos.find((product) => {
-        return product.id === parseInt(id);
-    })
 
     return (
         <div>

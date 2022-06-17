@@ -6,14 +6,14 @@ import { useState, useContext } from 'react';
 import CartContext from '../../context/CartContext';
 
 const ItemDetail = ({ producto }) => {
-    const {addProductCart} = useContext(CartContext);
-    const {deleteItem} = useContext(CartContext);
-    const {id, img, imgMini1, imgMini2, imgMini3, titulo, precio, descripcion, stock, initial, categoria } = producto;
+    const { addProductCart } = useContext(CartContext);
+    const { deleteItem } = useContext(CartContext);
+    const { id, img, imgMini1, imgMini2, imgMini3, titulo, precio, descripcion, stock, initial, categoria } = producto;
     const [cantidad, setCantidad] = useState(1);
     const [mostrarBoton, setMostrarBoton] = useState(false);
 
     const sendItem = (cant) => {
-        addProductCart({...producto, cantidad : cant})
+        addProductCart({ ...producto, cantidad: cant })
         setMostrarBoton(true)
     }
 
@@ -37,17 +37,17 @@ const ItemDetail = ({ producto }) => {
 
                 {!mostrarBoton ?
                     <>
-                    <ItemCount
-                        titulo={titulo}
-                        imgMini1={imgMini1}
-                        precio={precio}
-                        stock={stock}
-                        initial={initial}
-                        cantidad={cantidad}
-                        setCantidad={setCantidad}
-                        onAdd={sendItem}
-                    />
-                    <Button><Link to={`/category/${categoria}`} className="Link">Volver</Link></Button>
+                        <ItemCount
+                            titulo={titulo}
+                            imgMini1={imgMini1}
+                            precio={precio}
+                            stock={stock}
+                            initial={initial}
+                            cantidad={cantidad}
+                            setCantidad={setCantidad}
+                            onAdd={sendItem}
+                        />
+                        <Button><Link to={`/category/${categoria}`} className="Link">Volver</Link></Button>
                     </>
                     :
                     <>

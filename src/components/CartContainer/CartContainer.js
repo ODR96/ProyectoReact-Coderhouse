@@ -17,6 +17,13 @@ const CartContainer = () => {
                 <>
                     <h1>Tu carrito de compras</h1>
                     <div className='cart-container'>
+                        <div className='head-cart-container'>
+                            <h3 className='head-cart-prod'>Producto</h3>
+                            <h3 className='head-cart-desc'>Descripción</h3>
+                            <h3 className='head-cart-cant'>Cantidad</h3>
+                            <h3 className='head-cart-prec'>Precio</h3>
+                            <h3 className='head-cart-eliminar'>Eliminar</h3>
+                        </div>
                         {cartListItems.map((item) => {
                             return (
                                 <div className='item-cart-prod' key={item.id}>

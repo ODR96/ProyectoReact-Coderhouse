@@ -5,11 +5,11 @@
 }
 
 .cart-container h2{
-    flex-direction: column;
+    flex-direction: row;
 }
 
 .item-cart-prod {
-    width: 90%;
+    width: 100%;
     height: auto;
     margin: 5px;
     display: flex;
@@ -19,14 +19,17 @@
     display: flex;
     align-items: center;
     margin: auto;
+    width: 20%;
 }
 
 .item-cart-cant {
     margin: auto;
+    width: 20%;
 }
 
 .item-cart-prec {
     margin: auto;
+    width: 20%;
 }
 
 .img-cart>img {
@@ -38,4 +41,30 @@
 .btn-cart-delete {
     display: flex;
     align-items: center;
+    width: 20%;
 } 
+
+.head-cart-container {
+    display: flex;
+    width: 100%;
+}
+
+.head-cart-prod {
+    width: 20%;
+}
+
+.head-cart-desc {
+    width: 20%;
+}
+
+.head-cart-cant {
+    width: 20%;
+}
+
+.head-cart-prec {
+    width: 20%;
+}
+
+.head-cart-eliminar {
+    width: 20%;
+}

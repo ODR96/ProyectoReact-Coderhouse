@@ -17,7 +17,7 @@ const CartProvider = ({ children }) => {
 
     const cantInCart = () => {
         if (cartListItems.length !== 0) {
-            return cartListItems.reduce((acc, current) => acc + current.cantidad, 0)
+            return cartListItems.reduce((acc, current) => parseInt(acc) + parseInt(current.cantidad), 0)
         }
     }
 

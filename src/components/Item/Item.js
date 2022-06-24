@@ -4,24 +4,19 @@ import { Link } from "react-router-dom";
 import { useState, useContext } from "react";
 import { Button } from "@mui/material";
 import CartContext from '../../context/CartContext';
+import Modal from "../Modal/Modal";
+
 
 const Item = ({ img, titulo, imgMini1, categoria, precio, stock, initial, id }) => {
+    const [showModal, setShowModal] = useState(false)
     const { addProductCart } = useContext(CartContext);
-    const { deleteItem } = useContext(CartContext);
     const [cantidad, setCantidad] = useState(initial);
-    const [mostrarBoton, setMostrarBoton] = useState(false);
-
 
     const producto = { img, imgMini1, titulo, categoria, precio, stock, id, initial };
 
     const sendItem = (cant, bool) => {
         addProductCart({ ...producto, cantidad: cant })
-        setMostrarBoton(bool)
-    }
-
-    const modificarCompra = (id) => {
-        deleteItem(id)
-        setMostrarBoton(false)
+        setShowModal(bool);
     }
 
     return (
@@ -34,9 +29,8 @@ const Item = ({ img, titulo, imgMini1, categoria, precio, stock, initial, id }) 
                     </Link>
                 </button>
             </div>
-            <p>{titulo}</p>
-            <span>$ {precio}</span>
-            {!mostrarBoton ?
+                <p>{titulo}</p>
+                <span>$ {precio}</span>
                 <ItemCount
                     stock={stock}
                     titulo={titulo}
@@ -48,13 +42,13 @@ const Item = ({ img, titulo, imgMini1, categoria, precio, stock, initial, id }) 
                     setCantidad={setCantidad}
                     onAdd={sendItem}
                 />
-                :
-                <>
-                    <span>Precio Total: $ {precio * cantidad}</span>
+            <Modal title={"Producto agregado"} open={showModal} handleClose={() => setShowModal(false)}>
+                <div>
+                    <p>Se agrego {titulo} al carrito, desea finalizar la compra?</p>
+                    <Button onClick={() => (setShowModal(false))}>Seguir Comprando</Button>
                     <Button onClick={() => (sendItem(producto, true))}><Link to={'/cart'} className='Link'>Finalizar Compra</Link></Button>
-                    <Button onClick={() => modificarCompra(id)}>Modificar Compra</Button>
-                </>
-            }
+                </div>
+            </Modal>
         </div>
     )
 }

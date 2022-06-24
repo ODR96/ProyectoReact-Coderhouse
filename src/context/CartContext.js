@@ -21,9 +21,10 @@ const CartProvider = ({ children }) => {
         }
     }
 
-    const addProductCart = (producto, cantidad) => {
+    const addProductCart = (producto) => {
         if (!isInCart(producto.id)) {
             setCartListItems(cartListItems => [...cartListItems, producto]);
+            localStorage.setItem('carrito', JSON.stringify(cartListItems));
         }
     }
 

@@ -41,7 +41,14 @@ const NavBar = () => {
             })
     }, [])
 
-    const agregarCategorias = categoria.map((item) => {
+    const cats = categoria.reduce((acc, item) => {
+        if (!acc.find(el => el.categoria === item.categoria)) {
+            acc.push(item);
+        }
+        return acc;
+    }, [])
+
+    const agregarCategorias = cats.map((item) => {
         return <div key={item.id}><MenuItem onClick={handleClose}><Link to={`/category/${item.categoria}`} className='Link'>{item.categoria}</Link></MenuItem></div>
     })
 

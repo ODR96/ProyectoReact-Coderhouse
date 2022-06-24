@@ -20,16 +20,25 @@ const ItemCount = ({ stock, initial, cantidad, setCantidad, onAdd }) => {
     }
 
     return (
-        <div className="count-item">
-            <Button onClick={removeCount} className="card-item-button">-</Button>
-            <p>{cantidad}</p>
-            <Button onClick={addCount} className="card-item-button">+</Button>
-            <div>
-                <Button className="card-item-button" onClick={() => onAdd(cantidad, true)}>
-                    Agregar al carrito
-                </Button>
-            </div>
-        </div>
+        <>
+            {(stock === 0) ? (
+                <span>No hay stock disponible</span>
+            )
+                :
+                <>
+                    <div className="count-item">
+                        <Button onClick={removeCount} className="card-item-button">-</Button>
+                        <p>{cantidad}</p>
+                        <Button onClick={addCount} className="card-item-button">+</Button>
+                        <div>
+                            <Button className="card-item-button" onClick={() => onAdd(cantidad, true)}>
+                                Agregar al carrito
+                            </Button>
+                        </div>
+                    </div>
+                </>
+            }
+        </>
     )
 }
 

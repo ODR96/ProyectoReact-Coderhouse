@@ -68,3 +68,34 @@
 .head-cart-eliminar {
     width: 20%;
 }
+
+form.form-contact {
+    width: 400px;
+    padding: 30px;
+    margin: auto;
+}
+
+.form-inputs {
+    width: 100%;
+    padding: 10px;
+    border-radius: 4px;
+    margin-bottom: 15px;
+    border: 1px solid black;
+}
+
+.btn-form {
+    width: 100%;
+    padding: 10px;
+    margin: 10px;
+    color: white;
+    background: black;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+.btn-form:hover {
+    cursor: pointer;
+    background-color: #F6FAFD;
+    color: black;
+    border-color: black;
+}

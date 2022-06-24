@@ -8,10 +8,7 @@ import CartContext from '../../context/CartContext';
 import { Link } from 'react-router-dom';
 
 const CartWidget = () => {
-    const { cartListItems } = useContext(CartContext);
-    const { clearCart } = useContext(CartContext);
-    const { deleteItem } = useContext(CartContext);
-    const { cantInCart } = useContext(CartContext);
+    const { cartListItems, clearCart, deleteItem, cantInCart } = useContext(CartContext);
     const [anchorEl, setAnchorEl] = useState(null);
 
     const open = Boolean(anchorEl);
@@ -69,7 +66,7 @@ const CartWidget = () => {
                             })}
                             {cartListItems.length !== 0 && (
                                 <div className='btnCart'>
-                                    <Button><Link to={'/cart'} className='Link'>Finalizar Compra</Link></Button>
+                                    <Button><Link to={'/cart'} className="Link">Finalizar Compra</Link></Button>
                                     <Button onClick={() => clearCart()}>Limpiar carrito</Button>
                                 </ div>
                             )}

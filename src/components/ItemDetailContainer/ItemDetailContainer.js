@@ -30,6 +30,7 @@ const ItemDetailContainer = () => {
             .catch((err) => {
                 console.log('Fallo la llamada', err);
             })
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [id])
 
     return (

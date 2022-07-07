@@ -32,9 +32,11 @@ const ItemListContainer = ({ tittle }) => {
             .catch((err) => {
                 console.log('Fallo la llamada', err);
             })
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [category])
 
     const filterByCategory = (array) => {
+        // eslint-disable-next-line array-callback-return
         return array.map((item) => {
             if (item.categoria.toLowerCase() === category.toLowerCase()) {
                 return setProducts(products => [...products, item]);

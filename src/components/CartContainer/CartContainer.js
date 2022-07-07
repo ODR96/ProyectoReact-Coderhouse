@@ -1,4 +1,4 @@
-import { Button, TextField } from '@mui/material';
+import { Button } from '@mui/material';
 import { useContext, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import DeleteIcon from '@mui/icons-material/Delete';
@@ -7,7 +7,6 @@ import './CartContainer.css';
 import Modal from '../Modal/Modal';
 import db from '../../utils/firebaseConfig';
 import { addDoc, collection, doc, increment, updateDoc } from 'firebase/firestore';
-import { async } from '@firebase/util';
 
 
 const CartContainer = () => {
@@ -56,11 +55,12 @@ const CartContainer = () => {
 
     const updateStock = async () => {
         const stockFirebase = collection(db, 'Productos');
+        // eslint-disable-next-line array-callback-return
         order.items.map((item) => {
             const stockDoc = doc(stockFirebase, item.id)
             console.log(stockDoc)
             updateDoc(stockDoc, { stock: increment(-(item.cantidad)) })
-        })
+        }, [])
     }
 
     return (
@@ -120,11 +120,13 @@ const CartContainer = () => {
                                 </div>
                             ) : (
                                 <form className="form-contact" onSubmit={handleSubmit}>
-                                    <input className='form-inputs' id='nombre' type={"text"} name="Nombre" placeholder='Nombre' value={formValue.Nombre} onChange={handleChange}></input>
-                                    <input className='form-inputs' id='apellido' type={"text"} name="Apellido" placeholder='Apellido' value={formValue.Apellido} onChange={handleChange}></input>
-                                    <input className='form-inputs' id='telefono' type={"number"} name="Telefono" placeholder='Telefono' value={formValue.Telefono} onChange={handleChange}></input>
-                                    <input className='form-inputs' id='email' type={"text"} name="Email" placeholder='Email' value={formValue.Email} onChange={handleChange}></input>
-                                    <button type="submit" className='btn-form'>ENVIAR</button>
+                                    <input className='form-inputs' id='nombre' type={"text"} name="Nombre" placeholder='*Nombre' value={formValue.Nombre} onChange={handleChange} required></input>
+                                    <input className='form-inputs' id='apellido' type={"text"} name="Apellido" placeholder='*Apellido' value={formValue.Apellido} onChange={handleChange} required></input>
+                                    <input className='form-inputs' id='telefono' type={"number"} name="Telefono" placeholder='*Telefono' value={formValue.Telefono} onChange={handleChange} required></input>
+                                    <input className='form-inputs' id='email' type={"text"} name="Email" placeholder='*Email' value={formValue.Email} onChange={handleChange} required></input>
+                                    <input className='form-inputs' id='email' type={"text"} name="checkEmail" placeholder='*Confirma tu Email' onChange={handleChange} required></input>
+                                    <span>*Campos obligatorios</span>
+                                        <button type="submit" className='btn-form'>ENVIAR</button>       
                                 </form>
                             )}
 

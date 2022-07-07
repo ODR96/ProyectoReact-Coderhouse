@@ -6,14 +6,14 @@
     cd my-app
     npm start
 
-## Utilice MUI Material para la NavBar
+## Utilice MUI Material
 
     npm install @mui/material @emotion/react @emotion/styled
 
 ### Explicación del proyecto
  
-    Es un ecommerce bastante simple, no me estoy enfocando mucho en lo que es la parte visual todavía.
-    Tampoco me decido el enfoque de la tienda pero mientras tanto lo estoy haciendo en tecnología.
+    Ecommerce de venta de hardware realizado para el curso de React js de Coderhouse.
+    Es bastante sencillo, todavía sigo trabajando en el. Me falta agregar detalles para el inicio de sesión y también quiero agregar un apartado para administrador donde pueda subir más productos o actualizar los precios o stock.
 
 ## Saludos :)
 
